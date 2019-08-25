@@ -1,8 +1,8 @@
 import React from 'react';
 
-import ItemStatusFilter from './ItemStatusFilter';
+import ItemStatusFilter from '../ItemStatusFilter';
 
-const SearchPanel = () => (
+const Index = () => (
   <div className="container mb-4">
     <div className="row">
       <div className="col-sm-6">
@@ -15,4 +15,4 @@ const SearchPanel = () => (
   </div>
 );
 
-export default SearchPanel;
+export default Index;

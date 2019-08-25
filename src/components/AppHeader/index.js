@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AppHeader = () => (
-  <div className="container">
+  <div className="container app-header">
     <div className="row">
       <div className="col-sm-6">
         <h1>React Home Server</h1>

@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import AppHeader from './components/AppHeader';
 import SearchPanel from './components/SearchPanel';
-import TodoList from './components/TodoList/TodoList';
+import TodoList from './components/TodoList';
 
 const items = [
   {
