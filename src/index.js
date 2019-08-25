@@ -23,7 +23,7 @@ const items = [
 ];
 
 const App = () => (
-  <div className={'container'}>
+  <div className="container">
     <AppHeader />
     <SearchPanel />
     <TodoList items={items} />

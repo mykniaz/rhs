@@ -6,7 +6,8 @@ const style = {
   },
 };
 
-const TodoListItem = ({label, isPrimary = false}) => (
+// eslint-disable-next-line react/prop-types
+const TodoListItem = ({ label, isPrimary = false }) => (
   <span style={isPrimary ? style.primary : {}}>
     { label }
   </span>

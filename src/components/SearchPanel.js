@@ -1,7 +1,18 @@
-import React from "react";
+import React from 'react';
 
-const SearchPanel = () => {
-  return <input type="text"/>;
-};
+import ItemStatusFilter from './ItemStatusFilter';
+
+const SearchPanel = () => (
+  <div className="container mb-4">
+    <div className="row">
+      <div className="col-sm-6">
+        <input type="text" className="form-control" />
+      </div>
+      <div className="col-sm-6">
+        <ItemStatusFilter />
+      </div>
+    </div>
+  </div>
+);
 
 export default SearchPanel;
