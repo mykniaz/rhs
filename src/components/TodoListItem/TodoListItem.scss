@@ -1,0 +1,19 @@
+.todo-list-item {
+  display: flex;
+  align-items: center;
+
+  &__label {
+    flex-grow: 1;
+    cursor: pointer;
+    font-size: 20px;
+
+    &--important {
+      color: steelblue;
+      font-weight: bold;
+    }
+
+    &--done {
+      text-decoration: line-through;
+    }
+  }
+}

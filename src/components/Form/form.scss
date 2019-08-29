@@ -1,0 +1,14 @@
+.form {
+  &__control-wrapper {
+    display: flex;
+  }
+
+  &__label-input {
+    flex-grow: 1;
+    margin-right: 8px;
+  }
+
+  &__btn-add {
+    width: 96px;
+  }
+}
