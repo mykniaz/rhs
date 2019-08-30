@@ -1,17 +1,44 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-// eslint-disable-next-line react/prefer-stateless-function
-class ItemStatusFilter extends Component {
+export default class ItemStatusFilter extends Component {
+  constructor() {
+    super();
+
+    this.state = { type: '' };
+  }
+
+  typeBtnClickHandler(type) {
+    const { onChangeType } = this.props;
+    this.setState({ type });
+
+    onChangeType(type);
+  }
+
   render() {
+    const { type } = this.state;
+
     return (
       <div className="btn-group">
-        <button type="button" className="btn btn-info">
+        <button
+          type="button"
+          className={`btn ${type === '' ? 'btn-info' : 'btn-outline-secondary'}`}
+          onClick={() => this.typeBtnClickHandler('')}
+        >
           All
         </button>
-        <button type="button" className="btn btn-outline-secondary">
+        <button
+          type="button"
+          className={`btn ${type === 'active' ? 'btn-info' : 'btn-outline-secondary'}`}
+          onClick={() => this.typeBtnClickHandler('active')}
+        >
           Active
         </button>
-        <button type="button" className="btn btn-outline-secondary">
+        <button
+          type="button"
+          className={`btn ${type === 'done' ? 'btn-info' : 'btn-outline-secondary'}`}
+          onClick={() => this.typeBtnClickHandler('done')}
+        >
           Done
         </button>
       </div>
@@ -19,4 +46,6 @@ class ItemStatusFilter extends Component {
   }
 }
 
-export default ItemStatusFilter;
+ItemStatusFilter.propTypes = {
+  onChangeType: PropTypes.func.isRequired,
+};

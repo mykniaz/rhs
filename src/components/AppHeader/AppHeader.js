@@ -7,7 +7,7 @@ const AppHeader = (props) => {
     <div className="container app-header">
       <div className="row">
         <div className="col-sm-6">
-          <h1>React Home Server</h1>
+          <h1>React To-Do List</h1>
         </div>
         <div className="col-sm-6">
           {todo} more to do,  {done} done

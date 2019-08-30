@@ -17,7 +17,15 @@ export default class App extends Component {
           isImportant: false,
           id: 1,
         },
+        {
+          label: 'test2',
+          isDone: true,
+          isImportant: false,
+          id: 2,
+        },
       ],
+      term: '',
+      type: '',
     };
   }
 
@@ -63,6 +71,24 @@ export default class App extends Component {
     });
   };
 
+  searchInputHandler = (term) => {
+    this.setState({ term });
+  };
+
+  changeTypeHandler = (type) => {
+    this.setState({ type });
+  };
+
+  termItems = () => {
+    const { items, term, type } = this.state;
+
+    return items
+      .filter((item) => term === '' || item.label.indexOf(term) !== -1)
+      .filter((item) => type === ''
+        || (type === 'done' && item.isDone)
+        || (type === 'active' && !item.isDone));
+  };
+
   render() {
     const { items } = this.state;
 
@@ -72,9 +98,12 @@ export default class App extends Component {
     return (
       <div className="container">
         <AppHeader todo={todoItemsAmount} done={doneItemsAmount} />
-        <SearchPanel />
+        <SearchPanel
+          onSearchInput={this.searchInputHandler}
+          onChangeType={this.changeTypeHandler}
+        />
         <TodoList
-          items={items}
+          items={this.termItems()}
           onMarkItem={(id) => this.toggleProp(id, 'isImportant')}
           onCrossItem={(id) => this.toggleProp(id, 'isDone')}
           onDeleteItem={this.removeListItem}
