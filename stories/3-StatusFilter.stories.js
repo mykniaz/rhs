@@ -2,7 +2,9 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { select, withKnobs } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 import ItemStatusFilter from '../src/components/ItemStatusFilter';
+
 
 storiesOf('StatusFilter', module)
   .addDecorator(withKnobs)
@@ -20,7 +22,7 @@ storiesOf('StatusFilter', module)
 
     return (
       <div className="container">
-        <ItemStatusFilter onChangeType={() => {}} type={type} />
+        <ItemStatusFilter onChangeType={action('onChangeType')} type={type} />
       </div>
     );
   });
