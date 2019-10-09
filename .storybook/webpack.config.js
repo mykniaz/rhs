@@ -7,5 +7,21 @@ module.exports = async ({ config, mode }) => {
 		include: path.resolve(__dirname, '../'),
 	});
 
+	config.module.rules.push({
+		test: /\.stories\.jsx?$/,
+		loaders: [
+			{
+				loader: require.resolve('@storybook/source-loader'),
+				options: {
+					prettierConfig: {
+						printWidth: 100,
+						singleQuote: false,
+					},
+				},
+			},
+		],
+		enforce: 'pre',
+	});
+
 	return config;
 };

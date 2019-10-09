@@ -1,8 +1,7 @@
 import React from 'react';
 import Form from '../src/components/Form';
 
-import 'bootstrap/scss/bootstrap.scss';
+import {storiesOf} from "@storybook/react";
 
-export default { title: 'Form' };
-
-export const form = () => <Form onAdd={() => {}} />;
+storiesOf('Form', module)
+	.add('Form', () => <Form onAdd={() => {}} />);

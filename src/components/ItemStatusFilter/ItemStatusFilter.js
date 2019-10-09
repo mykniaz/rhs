@@ -5,15 +5,33 @@ export default class ItemStatusFilter extends Component {
   constructor() {
     super();
 
-    this.state = { type: '' };
+    this.state = { type: undefined };
   }
 
-  typeBtnClickHandler(type) {
-    const { onChangeType } = this.props;
+  componentDidMount() {
+    this.setTypeFromProps();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { type } = this.props;
+
+    if (prevProps.type === type) return;
+
+    this.setTypeFromProps();
+  }
+
+  setTypeFromProps = () => {
+    const { type } = this.props;
     this.setState({ type });
+  };
 
-    onChangeType(type);
-  }
+  btnClickHandler = (e) => {
+    const { onChangeType } = this.props;
+
+    this.setState({ type: e.target.id });
+
+    onChangeType(e.target.id);
+  };
 
   render() {
     const { type } = this.state;
@@ -22,22 +40,25 @@ export default class ItemStatusFilter extends Component {
       <div className="btn-group">
         <button
           type="button"
+          id=""
           className={`btn ${type === '' ? 'btn-info' : 'btn-outline-secondary'}`}
-          onClick={() => this.typeBtnClickHandler('')}
+          onClick={this.btnClickHandler}
         >
           All
         </button>
         <button
           type="button"
+          id="active"
           className={`btn ${type === 'active' ? 'btn-info' : 'btn-outline-secondary'}`}
-          onClick={() => this.typeBtnClickHandler('active')}
+          onClick={this.btnClickHandler}
         >
           Active
         </button>
         <button
           type="button"
+          id="done"
           className={`btn ${type === 'done' ? 'btn-info' : 'btn-outline-secondary'}`}
-          onClick={() => this.typeBtnClickHandler('done')}
+          onClick={this.btnClickHandler}
         >
           Done
         </button>
@@ -46,6 +67,11 @@ export default class ItemStatusFilter extends Component {
   }
 }
 
+ItemStatusFilter.defaultProps = {
+  type: null,
+};
+
 ItemStatusFilter.propTypes = {
+  type: PropTypes.string,
   onChangeType: PropTypes.func.isRequired,
 };
