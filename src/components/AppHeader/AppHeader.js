@@ -9,7 +9,7 @@ const AppHeader = (props) => {
         <div className="col-sm-6">
           <h1>React To-Do List</h1>
         </div>
-        <div className="col-sm-6">
+        <div className="col-sm-6 mt-3">
           {todo} more to do,  {done} done
         </div>
       </div>
